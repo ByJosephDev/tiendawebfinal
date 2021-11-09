@@ -1,7 +1,6 @@
 package aplicacion.spring.model;
 
 import java.io.Serializable;
-
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -14,33 +13,27 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
-
-
 @Entity
-@Table(name = "categorias")
-public class Categoria implements Serializable{
+@Table(name = "empresas")
+public class Empresa implements Serializable{
 	
 	private static final long serialVersionUID = 1L;
-
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	@Column(name = "id_categoria")
+	@Column(name = "id_empresa")
 	private long id;
 	
-	@Column(name = "nombre_categoria")
+	@Column(name = "nombre_empresa")
 	private String nombre;
 	
-	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "categoria")
+	@OneToMany(fetch = FetchType.LAZY,cascade = CascadeType.ALL,mappedBy = "empresa")
 	private List<Producto> productos;
-
-	public Categoria(long id, String nombre) {
+	
+	public Empresa(long id, String nombre) {
 		super();
 		this.id = id;
 		this.nombre = nombre;
-	}
-
-	public Categoria() {
-		super();
 	}
 
 	public long getId() {
@@ -58,7 +51,7 @@ public class Categoria implements Serializable{
 	public void setNombre(String nombre) {
 		this.nombre = nombre;
 	}
+
 	
 	
-		
 }
